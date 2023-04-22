@@ -8,6 +8,7 @@ function! Setting_key_buffer()
 	silent nnoremap <S-Tab> :bp<CR>
 	silent nnoremap <Tab> :bn<CR>
 	silent nnoremap <esc><esc> :bd<CR>
+	silent nnoremap <Leader>bb :call M_buffer("list")<CR>
 endfunction
 
 function! Setting_key_view()

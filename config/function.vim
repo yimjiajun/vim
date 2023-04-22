@@ -89,3 +89,9 @@ function! M_terminal(mode)
 		execute "tab term"
 	end
 endfunction
+
+function! M_buffer(mode)
+	if a:mode == "list"
+		execute "ls"
+	end
+endfunction
