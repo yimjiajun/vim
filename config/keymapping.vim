@@ -61,6 +61,16 @@ function! Setting_key_newtr()
 	silent nnoremap <Leader>E :call Open_Explorer(' ')<CR>
 endfunction
 
+function! Setting_key_search()
+	silent nnoremap <Leader>ff :call M_search_file()<CR>
+	silent nnoremap <Leader>fw :call M_search_word(" ")<CR>
+	silent nnoremap <Leader>fc :call M_search_word("*.c")<CR>
+	silent nnoremap <Leader>fC :call M_search_word("*.{c,h,cpp}")<CR>
+	silent nnoremap <Leader>fh :call M_search_word("*.h")<CR>
+	silent nnoremap <Leader>fd :call M_search_word("*.{dts,dtsi}")<CR>
+	silent nnoremap <Leader>fA :call M_search_fuzzy(" ")<CR>
+endfunction
+
 call Setting_key_leader()
 call Setting_key_move()
 call Setting_key_buffer()
@@ -68,3 +78,4 @@ call Setting_key_view()
 call Setting_key_edit()
 call Setting_key_yank()
 call Setting_key_newtr()
+call Setting_key_search()
