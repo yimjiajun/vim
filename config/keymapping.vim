@@ -88,6 +88,12 @@ function! Setting_key_git()
 	silent nnoremap <Leader>ggc :call M_git_commit("default")<CR>
 endfunction
 
+function! Setting_key_terminal()
+	silent nnoremap <Leader>ts :call M_terminal("split")<CR>
+	silent nnoremap <Leader>tv :call M_terminal("vertical")<CR>
+	silent nnoremap <Leader>tf :call M_terminal("default")<CR>
+endfunction
+
 call Setting_key_leader()
 call Setting_key_move()
 call Setting_key_buffer()
@@ -97,3 +103,4 @@ call Setting_key_yank()
 call Setting_key_newtr()
 call Setting_key_search()
 call Setting_key_git()
+call Setting_key_terminal()

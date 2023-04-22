@@ -78,3 +78,14 @@ function! M_git_commit(mode)
 		execute "!git commit"
 	endif
 endfunction
+
+function! M_terminal(mode)
+	if a:mode == "split"
+		execute "term"
+
+	elseif a:mode =="vertical"
+		execute "vert term"
+	else
+		execute "tab term"
+	end
+endfunction
