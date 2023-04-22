@@ -71,6 +71,23 @@ function! Setting_key_search()
 	silent nnoremap <Leader>fA :call M_search_fuzzy(" ")<CR>
 endfunction
 
+function! Setting_key_git()
+	silent nnoremap <Leader>ggl :call M_git_log("graph")<CR>
+	silent nnoremap <Leader>ggL :call M_git_log("default")<CR>
+	silent nnoremap <Leader>ggH :call M_git_log("diff")<CR>
+	silent nnoremap <Leader>ggC :call M_git_log("commit_count")<CR>
+	silent nnoremap <Leader>ggd :call M_git_diff("default")<CR>
+	silent nnoremap <Leader>ggD :call M_git_diff("previous")<CR>
+	silent nnoremap <Leader>ggh :call M_git_diff("staging")<CR>
+	silent nnoremap <Leader>ggs :call M_git_status("default")<CR>
+	silent nnoremap <Leader>ggS :call M_git_status("short")<CR>
+	silent nnoremap <Leader>ggw :call M_git_status("check_whitespace")<CR>
+	silent nnoremap <Leader>ggp :call M_git_add("patch")<CR>
+	silent nnoremap <Leader>gga :call M_git_add("default")<CR>
+	silent nnoremap <Leader>ggA :call M_git_add("all")<CR>
+	silent nnoremap <Leader>ggc :call M_git_commit("default")<CR>
+endfunction
+
 call Setting_key_leader()
 call Setting_key_move()
 call Setting_key_buffer()
@@ -79,3 +96,4 @@ call Setting_key_edit()
 call Setting_key_yank()
 call Setting_key_newtr()
 call Setting_key_search()
+call Setting_key_git()
