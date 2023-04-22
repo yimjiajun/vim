@@ -17,7 +17,7 @@ endfunction
 function! Setting_key_edit()
 	silent inoremap lkj <ESC>
 	silent tnoremap lkj <ESC>
-	silent tnoremap \][ <C-c>exit<CR>
+	silent tnoremap \][ <C-c> exit<CR>
 	silent inoremap () ()<ESC>i
 	silent inoremap {} {}<ESC>i
 	silent inoremap "" ""<ESC>i
