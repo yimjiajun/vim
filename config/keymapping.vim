@@ -47,9 +47,24 @@ function! Setting_key_leader()
 	endif
 endfunction
 
+function! Setting_netrw()
+	function! Open_Explorer(path)
+		if &filetype == "netrw"
+			execute "close"
+		elseif empty(&filetype)
+			execute "Ex"
+		else
+			execute "50vs +Ex" . a:path
+		endif
+	endfunction
+	silent nnoremap <Leader>e :call Open_Explorer('.')<CR>
+	silent nnoremap <Leader>E :call Open_Explorer(' ')<CR>
+endfunction
+
 call Setting_key_leader()
 call Setting_key_move()
 call Setting_key_buffer()
 call Setting_key_view()
 call Setting_key_edit()
 call Setting_key_yank()
+call Setting_netrw()
