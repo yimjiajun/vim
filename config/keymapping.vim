@@ -47,7 +47,7 @@ function! Setting_key_leader()
 	endif
 endfunction
 
-function! Setting_netrw()
+function! Setting_key_newtr()
 	function! Open_Explorer(path)
 		if &filetype == "netrw"
 			execute "close"
@@ -67,4 +67,4 @@ call Setting_key_buffer()
 call Setting_key_view()
 call Setting_key_edit()
 call Setting_key_yank()
-call Setting_netrw()
+call Setting_key_newtr()
