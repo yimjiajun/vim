@@ -1,5 +1,3 @@
-echo "Setting.vim"
-
 function! Setting_view()
 	set timeoutlen=200
 	set updatetime=400
