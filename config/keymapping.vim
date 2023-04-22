@@ -39,8 +39,8 @@ endfunction
 
 function! Setting_key_leader()
 	if v:version >= 900
-		let g:maplear = " "
-		let g:maplocalleader = " "
+		let g:mapleader=" "
+		let g:maplocalleader=" "
 	else
 		let mapleader = " "
 		let maplocalleader  = " "
