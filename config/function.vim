@@ -23,62 +23,6 @@ function! M_search_fuzzy(extension)
 	endif
 endfunction
 
-function! M_git_diff(mode)
-	if a:mode == "staging"
-		execute "!git diff --staged"
-	elseif a:mode == "previous"
-		execute "!git diff HEAD~"
-	elseif a:mode == "specify"
-		let file = input("enter file to git diff: ")
-		execute "!git diff ./**/" . file
-	elseif a:mode == "staging_specify"
-		let file = input("enter file to git diff: ")
-		execute "!git diff --staged ./**/" . file
-	else
-		execute "!git diff"
-	endif
-endfunction
-
-function! M_git_log(mode)
-	if a:mode == "graph"
-		execute "!git log --oneline --graph"
-	elseif a:mode == "commit_count"
-		execute "!git rev-list --count"
-	elseif a:mode == "diff"
-		execute "!git log --patch"
-	else
-		execute "!git log"
-	endif
-endfunction
-
-function! M_git_status(mode)
-	if a:mode == "short"
-		execute "!git status --short"
-	elseif a:mode == "check_whitespace"
-		execute "!git diff-tree --check $(git hash-object -t tree /dev/null) HEAD"
-	else
-		execute "!git status"
-	endif
-endfunction
-
-function! M_git_add(mode)
-	if a:mode == "patch"
-		execute "!git add -p"
-	elseif a:mode == "all"
-		execute "!git add ."
-	else
-		execute "!git add -i"
-	endif
-endfunction
-
-function! M_git_commit(mode)
-	if a:mode == "amend"
-		execute "!git commit --amend"
-	else
-		execute "!git commit"
-	endif
-endfunction
-
 function! M_terminal(mode)
 	if a:mode == "split"
 		execute "term"
