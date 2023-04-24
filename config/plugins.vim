@@ -12,6 +12,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 		Plug 'bfrg/vim-cpp-modern'
+
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	call plug#end()
 
 	let g:plug_threads = 16

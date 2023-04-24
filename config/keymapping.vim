@@ -3,6 +3,10 @@ let g:which_key_map_visual = {}
 let g:which_key_map.g = { 'name': '+ Global Plug' }
 let g:which_key_map.f = { 'name': '+ Finder' }
 let g:which_key_map.t = { 'name': '+ Toggle' }
+let g:which_key_map.l = { 'name': '+ Lsp' }
+let g:which_key_map.l.a = { 'name': '+ Actions' }
+let g:which_key_map.l.r = { 'name': '+ Rename/Refactor' }
+let g:which_key_map.l.q = { 'name': '+ Quickfix' }
 
 function! Setting_key_move()
 	silent inoremap <C-b> <Left>
