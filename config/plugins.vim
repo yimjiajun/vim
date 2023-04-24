@@ -1,6 +1,10 @@
 if filereadable($HOME . '/.vim/autoload/plug.vim')
 	call plug#begin()
 		Plug 'tpope/vim-fugitive'
+
+		Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+		Plug 'junegunn/fzf.vim'
+
 	call plug#end()
 
 	let g:plug_threads = 16
