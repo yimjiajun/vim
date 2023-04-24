@@ -19,13 +19,13 @@ Ever without any plugins still can working as similar features.<br>
     * zsh shell:
 
       ```bash
-      echo "alias vim="-u "$HOME/.config/vim/init.vim"" >> ~/.zshrc
+      echo "alias vim="vim -u "$HOME/.config/vim/init.vim""" >> ~/.zshrc
       ```
 
     * bash shell:
 
       ```bash
-      echo "alias vim="-u "$HOME/.config/vim/init.vim"" >> ~/.bash_aliases
+      echo "alias vim="vim -u "$HOME/.config/vim/init.vim""" >> ~/.bash_aliases
       ```
 
 3. Install plugins
