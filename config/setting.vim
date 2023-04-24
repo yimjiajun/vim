@@ -1,5 +1,5 @@
 function! Setting_view()
-	set timeoutlen=200
+	set background=dark
 	set updatetime=400
 	set showmode
 	set laststatus=2
