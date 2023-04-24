@@ -43,7 +43,11 @@ function! M_git_status(mode)
 	elseif a:mode == "check_whitespace"
 		execute cmd . ' ' . "diff-tree --check $(git hash-object -t tree /dev/null) HEAD"
 	else
-		execute cmd . ' ' . "status"
+		if g:loaded_fzf_vim == "1"
+			execute "GFiles?"
+		else
+			execute cmd . ' ' . "status"
+		endif
 	endif
 endfunction
 

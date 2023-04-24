@@ -9,6 +9,7 @@ function! Setting_key_buffer()
 	silent nnoremap <Tab> :bn<CR>
 	silent nnoremap <esc><esc> :bd<CR>
 	silent nnoremap <Leader>bb :call M_buffer("list")<CR>
+	silent nnoremap <Leader>m :call M_marks("default")<CR>
 endfunction
 
 function! Setting_key_view()

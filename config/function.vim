@@ -1,6 +1,11 @@
 function! M_search_file()
-	let regex_file = input("File to search (regex): ")
-	execute "find ./**/" . regex_file
+	if g:loaded_fzf_vim == "1"
+		execute "Files"
+
+	else
+		let regex_file = input("File to search (regex): ")
+		execute "find ./**/" . regex_file
+	endif
 endfunction
 
 function! M_search_word(extension)
@@ -14,19 +19,24 @@ function! M_search_word(extension)
 endfunction
 
 function! M_search_fuzzy(extension)
-	let word=input("Enter word to search: ")
-	if mode() == 'n'
-		if empty(word)
-			let word = expand('<cword>')
+	if g:loaded_fzf_vim == "1"
+		execute "Rg"
+	else
+		let word=input("Enter word to search: ")
+		if mode() == 'n'
+			if empty(word)
+				let word = expand('<cword>')
+			endif
+			execute "vimgrep /" . word . "/gjf ./**"
+			execute "tab +copen"
+		elseif mode() == "V"
+			if empty(word)
+				let word = getreg("*")
+			endif
+			execute "'<,' > norm y<CR>gv"
+			execute "vimgrep /" . word . "/gjf ./**"
 		endif
-		execute "vimgrep /" . word . "/gjf ./**"
-		execute "tab +copen"
-	elseif mode() == "V"
-		if empty(word)
-			let word = getreg("*")
-		endif
-		execute "'<,' > norm y<CR>gv"
-		execute "vimgrep /" . word . "/gjf ./**"
+
 	endif
 endfunction
 
@@ -42,7 +52,22 @@ function! M_terminal(mode)
 endfunction
 
 function! M_buffer(mode)
-	if a:mode == "list"
-		execute "ls"
-	end
+	if g:loaded_fzf_vim == "1"
+		if a:mode == "list"
+			execute "Buffers"
+
+		endif
+	else
+		if a:mode == "list"
+			execute "ls"
+		endif
+	endi
+endfunction
+
+function! M_marks(mod)
+	if g:loaded_fzf_vim == "1"
+		execute "Marks"
+	else
+		execute "marks"
+	endif
 endfunction
