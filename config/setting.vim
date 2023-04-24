@@ -6,6 +6,7 @@ function! Setting_view()
 	set laststatus=2
 	set cmdheight=1
 	set relativenumber
+	set number
 	set wrap
 	set linebreak
 	set splitbelow
