@@ -6,6 +6,10 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'junegunn/fzf.vim'
 
 		Plug 'lifepillar/vim-gruvbox8'
+
+		Plug 'liuchengxu/vim-which-key'
+		" On-demand lazy load
+		Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 	call plug#end()
 
 	let g:plug_threads = 16
