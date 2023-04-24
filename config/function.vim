@@ -14,12 +14,19 @@ function! M_search_word(extension)
 endfunction
 
 function! M_search_fuzzy(extension)
+	let word=input("Enter word to search: ")
 	if mode() == 'n'
-		execute "vimgrep /" . expand('<cword>') . "/gjf ./**"
+		if empty(word)
+			let word = expand('<cword>')
+		endif
+		execute "vimgrep /" . word . "/gjf ./**"
 		execute "tab +copen"
 	elseif mode() == "V"
+		if empty(word)
+			let word = getreg("*")
+		endif
 		execute "'<,' > norm y<CR>gv"
-		execute "vimgrep /" . getreg("*") . "/gjf ./**"
+		execute "vimgrep /" . word . "/gjf ./**"
 	endif
 endfunction
 
