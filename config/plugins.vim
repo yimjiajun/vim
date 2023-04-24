@@ -5,6 +5,7 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 		Plug 'junegunn/fzf.vim'
 
+		Plug 'lifepillar/vim-gruvbox8'
 	call plug#end()
 
 	let g:plug_threads = 16
