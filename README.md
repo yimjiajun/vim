@@ -13,19 +13,21 @@ Ever without any plugins still can working as similar features.<br>
     git clone https://github.com/yimjiajun/vim.git $HOME/.config/vim
     ```
 
-2. Export aliases `vim` as using customize vim configuration file[^1]<br>
-   Aliases the `vim` depends on using shell:
+2. Export `vim` customize vim configuration file path[^1]<br>
+   Source the script to active the environment variable.
 
     * zsh shell:
 
       ```bash
-      echo "alias vim="vim -u "$HOME/.config/vim/init.vim""" >> ~/.zshrc
+      echo "export VIMINIT='source $HOME/.config/vim/init.vim'" >> $HOME/.zshrc
+      source $HOME/.zshrc
       ```
 
     * bash shell:
 
       ```bash
-      echo "alias vim="vim -u "$HOME/.config/vim/init.vim""" >> ~/.bash_aliases
+      echo "export VIMINIT='source $HOME/.config/vim/init.vim'" >> $HOME/.bash_aliases
+      source $HOME/.bashrc
       ```
 
 3. Install plugins
