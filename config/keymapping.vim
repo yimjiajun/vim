@@ -138,6 +138,11 @@ function! Setting_key_terminal()
 	silent nnoremap <Leader>tf :call M_terminal("default")<CR>
 endfunction
 
+function! Setting_key_session()
+	let g:which_key_map.s = 'Session load'
+	silent nnoremap <Leader>s :call M_session("load")<CR>
+endfunction
+
 call Setting_key_leader()
 call Setting_key_move()
 call Setting_key_buffer()
@@ -148,3 +153,4 @@ call Setting_key_newtr()
 call Setting_key_search()
 call Setting_key_git()
 call Setting_key_terminal()
+call Setting_key_session()

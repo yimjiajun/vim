@@ -98,3 +98,10 @@ augroup format
 		\ set nocursorline
 	augroup END
 augroup END
+
+augroup session
+	augroup save_session
+		au!
+		au VimLeavePre * call M_session("save")
+	augroup END
+augroup END

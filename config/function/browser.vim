@@ -40,7 +40,7 @@ function! M_open_browser(src)
 	endif
 
 	if empty(cmd)
-		echohl WarningMsg | echo "Browser Not Found ..."
+		echohl WarningMsg | echo "Browser Not Found ..." | echohl none
 	else
 		execute "!" . cmd . ' ' . a:src
 	endif

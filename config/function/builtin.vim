@@ -80,3 +80,23 @@ function! M_statusline(mode)
 		set statusline=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 	endif
 endfunction
+
+function! M_session(mode)
+	let path = $HOME . '/.vim/session'
+	let session_name = substitute(expand(getcwd()), '/', '_', 'g') . ".vim"
+	let session = path . '/' . session_name
+
+	if a:mode == "save"
+		if isdirectory(path) == '0'
+			call M_create_directory(path)
+		endif
+
+		execute "mksession!" . ' ' . session
+	else
+		if isdirectory(path) == '1' && filereadable(session)
+			execute "source" . ' ' . session
+		else
+			echohl WarningMsg | echo "Session not found!" | echohl none
+		endif
+	endif
+endfunction
