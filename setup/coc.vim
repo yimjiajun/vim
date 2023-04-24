@@ -152,18 +152,26 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+let g:which_key_map.l.l.a = 'diagnostics'
+nnoremap <silent><nowait> <space>lla  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+let g:which_key_map.l.l.e = 'extensions'
+nnoremap <silent><nowait> <space>lle  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+let g:which_key_map.l.l.c = 'commands'
+nnoremap <silent><nowait> <space>llc  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+let g:which_key_map.l.l.o = 'outline'
+nnoremap <silent><nowait> <space>llo  :<C-u>CocList outline<cr>
 " Search workspace symbols
+let g:which_key_map.l.l.s = 'symbols'
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+let g:which_key_map.l.l.j = 'next default action item'
+nnoremap <silent><nowait> <space>llj  :<C-u>CocNext<CR>
 " Do default action for previous item
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+let g:which_key_map.l.l.k = 'previous default action item'
+nnoremap <silent><nowait> <space>llk  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+let g:which_key_map.l.l.p = 'resume list'
+nnoremap <silent><nowait> <space>llp  :<C-u>CocListResume<CR>

@@ -7,6 +7,7 @@ let g:which_key_map.l = { 'name': '+ Lsp' }
 let g:which_key_map.l.a = { 'name': '+ Actions' }
 let g:which_key_map.l.r = { 'name': '+ Rename/Refactor' }
 let g:which_key_map.l.q = { 'name': '+ Quickfix' }
+let g:which_key_map.l.l = { 'name': '+ List' }
 
 function! Setting_key_move()
 	silent inoremap <C-b> <Left>
