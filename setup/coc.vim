@@ -1,3 +1,4 @@
+if isdirectory($HOME . '/.vim/plugged/coc.nvim')
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
@@ -175,3 +176,5 @@ nnoremap <silent><nowait> <space>llk  :<C-u>CocPrev<CR>
 " Resume latest coc list
 let g:which_key_map.l.l.p = 'resume list'
 nnoremap <silent><nowait> <space>llp  :<C-u>CocListResume<CR>
+
+endif "if isdirectory($HOME . '/.vim/plugged/coc.nvim')
