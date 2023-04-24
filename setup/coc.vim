@@ -166,7 +166,7 @@ let g:which_key_map.l.l.o = 'outline'
 nnoremap <silent><nowait> <space>llo  :<C-u>CocList outline<cr>
 " Search workspace symbols
 let g:which_key_map.l.l.s = 'symbols'
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <space>lls  :<C-u>CocList -I symbols<cr>
 " Do default action for next item
 let g:which_key_map.l.l.j = 'next default action item'
 nnoremap <silent><nowait> <space>llj  :<C-u>CocNext<CR>
