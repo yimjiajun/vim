@@ -5,7 +5,7 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 		Plug 'junegunn/fzf.vim'
 
-		Plug 'lifepillar/vim-gruvbox8'
+		Plug 'morhetz/gruvbox'
 
 		Plug 'liuchengxu/vim-which-key'
 		" On-demand lazy load
