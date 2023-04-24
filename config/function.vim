@@ -1,7 +1,6 @@
 function! M_search_file()
 	if g:loaded_fzf_vim == "1"
 		execute "Files"
-
 	else
 		let regex_file = input("File to search (regex): ")
 		execute "find ./**/" . regex_file
@@ -64,10 +63,20 @@ function! M_buffer(mode)
 	endi
 endfunction
 
-function! M_marks(mod)
+function! M_marks(mode)
 	if g:loaded_fzf_vim == "1"
 		execute "Marks"
 	else
 		execute "marks"
+	endif
+endfunction
+
+function! M_statusline(mode)
+	if a:mode == "ascii"
+		set statusline=\ %<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
+	elseif a:mode == "byte"
+		set statusline=\ %<%f%=\ [%1*%M%*%n%R%H]\ %-19(%3l,%02c%03V%)%O'%02b'
+	else
+		set statusline=\ %<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 	endif
 endfunction

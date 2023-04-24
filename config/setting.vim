@@ -4,6 +4,7 @@ function! Setting_view()
 	set updatetime=400
 	set showmode
 	set laststatus=2
+	call M_statusline("default")
 	set cmdheight=1
 	set relativenumber
 	set number
