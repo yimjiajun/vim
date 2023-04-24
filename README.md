@@ -36,4 +36,4 @@ Ever without any plugins still can working as similar features.<br>
     vim +PlugInstall
     ```
 
-[^1]: Why not `$VIMINIT` : Distinct between Neovim and Vim, which environment variable is using on both editor.
+[^1]: Why `$VIMINIT` : Startup configuration file rather than _.vimrc_ for Neovim and Vim, which environment variable is using on both editor.
