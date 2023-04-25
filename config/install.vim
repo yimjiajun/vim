@@ -110,3 +110,12 @@ function! Install_coc_language()
 
 	echo system("ln -sF $(dirname $VIMINIT | cut -d ' ' -f 2)/setup/coc-settings.json $HOME/.vim/")
 endfunction
+
+function! Install_all()
+	echohl MoreMsg | call Display_tittle("Install all packages") | echohl none
+	call Install_curl()
+	call Install_nodejs()
+	call Install_ripgrep()
+	call Install_fzf()
+	call Install_coc_language()
+endfunction
