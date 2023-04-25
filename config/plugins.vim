@@ -33,6 +33,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'junegunn/vim-easy-align'
 
 		Plug 'airblade/vim-gitgutter'
+
+		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 	call plug#end()
 
 	let g:plug_threads = 16
