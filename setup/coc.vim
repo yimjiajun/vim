@@ -130,7 +130,8 @@ xmap <silent> <leader>lrs <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>lrs <Plug>(coc-codeaction-refactor-selected)
 
 " Run the Code Lens action on the current line
-nmap <leader>cl  <Plug>(coc-codelens-action)
+let g:which_key_map.l.c = 'Code Lens action'
+nmap <leader>lc  <Plug>(coc-codelens-action)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server
