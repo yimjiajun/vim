@@ -16,7 +16,7 @@ function! M_get_browser()
 			let browser = 'firefox'
 		elseif executable('chrome')
 			let browser = 'chrome'
-		elseif has('macox') && executable('safari')
+		elseif has('mac') && executable('safari')
 			let browser = 'safari'
 		endif
 	end
@@ -32,6 +32,12 @@ function! M_open_browser(src)
 			let cmd = 'wslview'
 		elseif executable('xdg-open')
 			let cmd = 'xdg-open'
+		elseif executable('open')
+			let cmd = 'open'
+		endif
+	else has('win32')
+		if executable('start')
+			let cmd = 'start'
 		endif
 	endif
 
@@ -42,7 +48,7 @@ function! M_open_browser(src)
 	if empty(cmd)
 		echohl WarningMsg | echo "Browser Not Found ..." | echohl none
 	else
-		execute "!" . cmd . ' ' . a:src
+		execute "!" . cmd . ' ' . expand(a:src)
 	endif
 
 	return cmd
