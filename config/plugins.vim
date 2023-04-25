@@ -25,6 +25,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'markonm/traces.vim'
 
 		Plug 'preservim/tagbar'
+
+		Plug 'tpope/vim-dispatch'
 	call plug#end()
 
 	let g:plug_threads = 16
