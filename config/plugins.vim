@@ -14,6 +14,7 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'bfrg/vim-cpp-modern'
 
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+		Plug 'voldikss/vim-floaterm'
 	call plug#end()
 
 	let g:plug_threads = 16

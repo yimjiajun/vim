@@ -136,6 +136,8 @@ function! Setting_key_terminal()
 	silent nnoremap <Leader>tv :call M_terminal("vertical")<CR>
 	let g:which_key_map.t.f = 'Term'
 	silent nnoremap <Leader>tf :call M_terminal("default")<CR>
+	let g:which_key_map.t.F = 'Term (selection)'
+	silent nnoremap <Leader>tF :call M_terminal("selection")<CR>
 endfunction
 
 function! Setting_key_session()

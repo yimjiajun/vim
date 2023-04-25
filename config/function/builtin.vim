@@ -45,8 +45,19 @@ function! M_terminal(mode)
 
 	elseif a:mode =="vertical"
 		execute "vert term"
+	elseif a:mode == "selection"
+		let l:shell = input("Select shell (bash, sh, zsh, powershell.exe): ")
+		if g:loaded_floaterm
+			execute "FloatermNew --width=0.9 --height=0.9 " . l:shell
+		else
+			execute "tab term " . l:shell
+		endif
 	else
-		execute "tab term"
+		if g:loaded_floaterm
+			execute "FloatermNew --width=0.9 --height=0.9"
+		else
+			execute "tab term"
+		endif
 	end
 endfunction
 
