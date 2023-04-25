@@ -89,26 +89,44 @@ endfunction
 
 function! Install_coc_language()
 	function! Install_coc_cmkae()
-		echo system("pip3 install cmake-language-server")
+		if executable('pip')
+			echo system("pip install cmake-language-server")
+		else
+			echo system("pip3 install cmake-language-server")
+		endif
 	endfunction
 
 	if !isdirectory($HOME . '/.vim/plugged/coc.nvim')
 		return
 	endif
 
-	let l:lang = ['coc-clangd', 'coc-markdownlint', 'coc-json', 'coc-cmake']
+	call Display_tittle("Coc LSP")
+
+	let l:lang = "coc-clangd coc-markdownlint coc-json coc-cmake"
+	let l:lang .= ' ' . g:install_coc_snippets_lang
 	let l:install = 'CocInstall'
-	let l:install_cmd = l:install
-
-	call Install_coc_cmkae()
-
-	for lang in l:lang
-		let l:install_cmd .= ' ' . lang
-	endfor
-
+	let l:install_cmd = l:install . ' ' . l:lang
 	execute l:install_cmd
 
+	call Install_coc_cmkae()
 	echo system("ln -sF $(dirname $VIMINIT | cut -d ' ' -f 2)/setup/coc-settings.json $HOME/.vim/")
+endfunction
+
+function! Install_coc_snippets()
+
+	call Display_tittle("coc-snippets")
+
+	if !has('pythonx')
+		if executable('pip')
+			let l:pip_cmd = 'pip '
+		else
+			let l:pip_cmd = 'pip3 '
+		endif
+
+		echo system(l:pip_cmd . "install pynvim")
+
+		execute "pyx print('python support in vim')"
+	endif
 endfunction
 
 function! Install_all()
@@ -117,5 +135,6 @@ function! Install_all()
 	call Install_nodejs()
 	call Install_ripgrep()
 	call Install_fzf()
+	call Install_coc_snippets()
 	call Install_coc_language()
 endfunction

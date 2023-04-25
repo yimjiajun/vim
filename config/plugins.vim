@@ -15,6 +15,10 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 		Plug 'voldikss/vim-floaterm'
+		" Track the engine.
+		Plug 'SirVer/ultisnips'
+		" Snippets are separated from the engine. Add this if you want them:
+		Plug 'honza/vim-snippets'
 	call plug#end()
 
 	let g:plug_threads = 16
