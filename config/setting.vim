@@ -16,7 +16,8 @@ function! Setting_view()
 	set cursorline
 	set nocursorcolumn
 	execute 'syntax on'
-
+	set listchars=tab:▸\ ,trail:·,extends:…,precedes:…,nbsp:␣
+	set list
 	" if has('termguicolors')
 		" set termguicolors
 	" endif
