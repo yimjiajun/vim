@@ -27,6 +27,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'preservim/tagbar'
 
 		Plug 'tpope/vim-dispatch'
+
+		Plug 'github/copilot.vim' " run ':Copilot! setup' to sign-up
 	call plug#end()
 
 	let g:plug_threads = 16
