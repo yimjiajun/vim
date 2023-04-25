@@ -62,3 +62,27 @@ function! Install_fzf()
 	endif
 endfunction
 
+function! Install_go()
+	if !executable('go')
+		echo "Skip install GO ..."
+		return
+	endif
+
+	if has('mac')
+		let l:download_src = "https://go.dev/dl/go1.20.3.darwin-arm64.pkg"
+		echo system("open " .. expand(l:download_src))
+	elseif has('unix')
+		let l:download_src = "https://go.dev/dl/go1.20.3.linux-amd64.tar.gz"
+		echo system("curl -o /tmp/go_install.tar.gz -O " ..  expand(l:download_src))
+		echo system("rm -rf /usr/local/go && tar -C /usr/local -xzf /tmp/go_install.tar.gz")
+		echo system("export PATH=$PATH:/usr/local/go/bin")
+	elseif has('win32')
+		let l:download_src = "https://go.dev/dl/go1.20.3.darwin-arm64.pkg://go.dev/dl/go1.20.3.windows-amd64.msi"
+		echo system("start " .. expand(l:download_src))
+	else
+		echohl WarningMsg | echo "System not support ..." | echohl none
+		return
+	endif
+
+	echo system("go version")
+endfunction
