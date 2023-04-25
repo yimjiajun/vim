@@ -37,3 +37,15 @@ function! Install_nodejs()
 		echo system("nvm install 17.3.0")
 	endif
 endfunction
+
+function! Install_ripgrep()
+	let l:pkg = 'ripgrep'
+	let l:install = M_get_install_package_cmd()
+	let l:install_cmd = l:install . ' ' . l:pkg
+
+	call Display_tittle(l:pkg)
+	if executable('rg') == 0 && g:loaded_fzf == 1
+		echohl MoreMsg | echo "Install RipGrep for fzf vim ..." | echohl none
+		echo system(l:install_cmd)
+	endif
+endfunction
