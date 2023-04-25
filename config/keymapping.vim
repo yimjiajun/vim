@@ -47,6 +47,12 @@ function! Setting_key_edit()
 	silent inoremap [<CR> [<CR>]<C-o>O
 	silent inoremap "<CR> "<CR>"<C-o>O
 	silent inoremap '<CR> '<CR>'<C-o>O
+
+	if isdirectory($HOME . '/.vim/plugged/vim-easy-align')
+		let g:which_key_map.t.a  = 'Alignment'
+		silent nnoremap <Leader>ta <Plug>(LiveEasyAlign)
+		silent xnoremap <Leader>ta <Plug>(LiveEasyAlign)
+	endif
 endfunction
 
 function! Setting_key_yank()

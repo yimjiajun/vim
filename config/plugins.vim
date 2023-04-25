@@ -29,6 +29,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'tpope/vim-dispatch'
 
 		Plug 'github/copilot.vim' " run ':Copilot! setup' to sign-up
+
+		Plug 'junegunn/vim-easy-align'
 	call plug#end()
 
 	let g:plug_threads = 16
