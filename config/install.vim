@@ -86,3 +86,27 @@ function! Install_go()
 
 	echo system("go version")
 endfunction
+
+function! Install_coc_language()
+	function! Install_coc_cmkae()
+		echo system("pip3 install cmake-language-server")
+	endfunction
+
+	if !isdirectory($HOME . '/.vim/plugged/coc.nvim')
+		return
+	endif
+
+	let l:lang = ['coc-clangd', 'coc-markdownlint', 'coc-json', 'coc-cmake']
+	let l:install = 'CocInstall'
+	let l:install_cmd = l:install
+
+	call Install_coc_cmkae()
+
+	for lang in l:lang
+		let l:install_cmd .= ' ' . lang
+	endfor
+
+	execute l:install_cmd
+
+	echo system("ln -sF $(dirname $VIMINIT | cut -d ' ' -f 2)/setup/coc-settings.json $HOME/.vim/")
+endfunction
