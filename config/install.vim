@@ -63,7 +63,7 @@ function! Install_fzf()
 endfunction
 
 function! Install_go()
-	if !executable('go')
+	if executable('go')
 		echo "Skip install GO ..."
 		return
 	endif
