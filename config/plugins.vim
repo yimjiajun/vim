@@ -21,6 +21,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'honza/vim-snippets'
 
 		Plug 'mhinz/vim-startify'
+
+		Plug 'markonm/traces.vim'
 	call plug#end()
 
 	let g:plug_threads = 16
