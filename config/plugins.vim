@@ -23,6 +23,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'mhinz/vim-startify'
 
 		Plug 'markonm/traces.vim'
+
+		Plug 'preservim/tagbar'
 	call plug#end()
 
 	let g:plug_threads = 16

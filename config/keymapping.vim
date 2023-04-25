@@ -28,6 +28,10 @@ endfunction
 
 function! Setting_key_view()
 	silent nnoremap <BS> :set hlsearch!<CR>
+	if isdirectory($HOME . '/.vim/plugged/tagbar')
+		let g:which_key_map.T = 'Tagbar'
+		silent nnoremap <Leader>T :TagbarToggle<CR>
+	endif
 endfunction
 
 function! Setting_key_edit()
