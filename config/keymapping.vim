@@ -74,19 +74,10 @@ function! Setting_key_leader()
 endfunction
 
 function! Setting_key_newtr()
-	function! Open_Explorer(path)
-		if &filetype == "netrw"
-			execute "close"
-		elseif empty(&filetype)
-			execute "Ex"
-		else
-			execute "50vs +Ex" . a:path
-		endif
-	endfunction
 	let g:which_key_map.e = 'Explorer'
-	silent nnoremap <Leader>e :call Open_Explorer('.')<CR>
+	silent nnoremap <Leader>e :20Lexplore<CR>
 	let g:which_key_map.E = 'Explorer->file'
-	silent nnoremap <Leader>E :call Open_Explorer(' ')<CR>
+	silent nnoremap <Leader>E :Explore<CR>
 endfunction
 
 function! Setting_key_search()
