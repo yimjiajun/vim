@@ -49,3 +49,16 @@ function! Install_ripgrep()
 		echo system(l:install_cmd)
 	endif
 endfunction
+
+function! Install_fzf()
+	let l:pkg = 'fzf'
+	let l:install = M_get_install_package_cmd()
+	let l:install_cmd = l:install . ' ' . l:pkg
+
+	call Display_tittle(l:pkg)
+	if executable(l:pkg) == 0 && g:loaded_fzf == 1
+		echohl MoreMsg | echo "Install FzF for fzf vim ..." | echohl none
+		echo system(l:install_cmd)
+	endif
+endfunction
+
