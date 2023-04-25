@@ -35,6 +35,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'airblade/vim-gitgutter'
 
 		Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+		Plug 'machakann/vim-highlightedyank'
 	call plug#end()
 
 	let g:plug_threads = 16
