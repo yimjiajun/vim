@@ -16,12 +16,14 @@ endfunction
 
 function! M_get_os_like_id()
 	if has('mac')
-		return system("echo $OSTYPE")
+		let l:id =  system("echo $OSTYPE")
 	elseif has('unix')
-		return system("cat /etc/os-release | grep ID_LIKE | cut -d '=' -f 2")
+		let l:id = system("cat /etc/os-release | grep ID_LIKE | cut -d '=' -f 2")
 	else
-		return 'unknow'
+		let l:id = 'unknow'
 	endif
+
+	return trim(l:id)
 endfunction
 
 function! M_get_install_package_cmd()
