@@ -13,7 +13,7 @@ if !has('nvim')
 
 	let script_path = $HOME . "/.config/vim"
 
-	for _dir in ['config', 'setup']
+	for _dir in ['config', 'setup', 'features']
 		let path = Append_path(script_path, _dir)
 		let vimscripts = split(glob(Get_absolute_path(path, '/**/*.vim')))
 		for _script in vimscripts
