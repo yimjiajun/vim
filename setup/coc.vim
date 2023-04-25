@@ -1,4 +1,25 @@
 if isdirectory($HOME . '/.vim/plugged/coc.nvim')
+
+function! H_coc()
+	echo "1. Compltes with source"
+	echo "2. Languages Server"
+	echo "3. Extensions"
+	let l:sel = input("Enter number to get help (1-3): ")
+
+	if l:sel == 1
+		let l:website = "https://github.com/neoclide/coc.nvim/wiki/Completion-with-sources"
+		call M_open_browser(l:website)
+	elseif l:sel == 2
+		let l:website = "https://github.com/neoclide/coc.nvim/wiki/Language-servers"
+		call M_open_browser(l:website)
+	elseif l:sel == 3
+		let l:website = "https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions"
+		call M_open_browser(l:website)
+	else
+		execute "h coc-nvim"
+	endif
+endfunction
+
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
