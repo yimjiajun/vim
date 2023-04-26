@@ -24,17 +24,32 @@ function! Install_curl()
 endfunction
 
 function! Install_nodejs()
-	if has('mac')
-		let l:pkg = 'node'
-	else
-		let l:pkg = 'nodejs'
-	endif
+	let l:pkg = 'node'
 
 	call Display_tittle(l:pkg)
-	if executable(l:pkg) == 0 && isdirectory($HOME . '/.vim/plugged/coc.nvim')
-		echohl MoreMsg | echo "Install Nodejs for coc LSP ..." | echohl none
-		echo system("curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash")
-		echo system("nvm install 17.3.0")
+	if isdirectory($HOME . '/.vim/plugged/coc.nvim')
+		if executable(l:pkg) == 0
+			echohl MoreMsg | echo "Install Nodejs for coc LSP ..." | echohl none
+			echo system("curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash")
+		endif
+
+		if executable(l:pkg)
+			let l:version = system(l:pkg . ' --version')
+			let l:m_ver = matchstr(l:version, '\d\+')
+			if l:m_ver < 14
+				echohl MoreMsg | echo "Update Nodejs for coc LSP ..." |  echohl none
+
+				if executable('nvm')
+					echo system("nvm install 17.3.0")
+				else
+					echohl WarningMsg
+					echo "Enter the command below to manual update nodejs:"
+					echo "> $ nvm install 17.3.0"
+					echohl none
+				endif
+			endif
+		endif
+
 	endif
 endfunction
 
