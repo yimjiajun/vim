@@ -1,5 +1,8 @@
 #!/bin/bash
 
+vim_path="$HOME/.config/vim"
+vim_init_file="init.vim"
+
 function get_package_install_cmd {
 	if [[ $OSTYPE == "linux-gnu" ]]; then
 		echo "sudo apt install -y "
@@ -62,6 +65,38 @@ function vim_install {
 	echo -e "\033[33m================================\033[0m"
 	echo -e "\033[33m Restart Terminal to use Vim ...\033[0m"
 	echo -e "\033[33m================================\033[0m"
+
+	if ! [[ -d $vim_path ]]; then
+		echo -e "\033[33mvim configuration path not on defualt path ! \033[0m"
+		read -p ">> Enter vim configuration path : " vim_path
+
+		if [[ -z $vim_path ]]; then
+			echo -e "\033[31merror: Provided empty path !\033[0m"
+			exit 1
+		elif ! [[ -d $vim_path ]]; then
+			echo -e "\033[31merror: Provided path not exist !\033[0m"
+			exit 1
+		fi
+	fi
+
+	if [[ $(grep "VIMINIT" -wc ${HOME}/.$(basename $SHELL)rc) -ne 0 ]]; then
+		echo -e "\033[33mVIMINIT already exist !\033[0m"
+		echo ">>"
+		grep "VIMINIT" -w ${HOME}/.$(basename $SHELL)rc
+		echo "<<"
+	else
+		echo "export VIMINIT='source $vim_path/$vim_init_file'" >> ${HOME}/.$(basename $SHELL)rc
+	fi
+
+	$SHELL -c "source ${HOME}/.$(basename $SHELL)rc"
+
+	echo -e "\033[33m================================\033[0m"
+	echo -e "\033[33m Vim Startup configuration path:\033[0m"
+	echo -e "\033[33m > $vim_path\033[0m"
+	echo -e "\033[33m VIMINIT:\033[0m"
+	echo -e "\033[33m > $(grep "VIMINIT" -w ${HOME}/.$(basename $SHELL)rc) \033[0m"
+	echo -e "\033[33m================================\033[0m"
+
 	vim +PlugInstall +qall
 	vim +'call Install_all()' +qall
 }
