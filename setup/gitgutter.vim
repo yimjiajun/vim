@@ -4,10 +4,11 @@ if isdirectory($HOME . "/.vim/plugged/vim-gitgutter")
 		return printf('+%d ~%d -%d', a, m, r)
 	endfunction
 
+	let g:gitgutter_map_keys = 0
 	set statusline+=\ \ %{GitStatus()}
 	set foldtext=gitgutter#fold#foldtext()
 
-	function! Key_setup_gitgutter()
+	function! s:Key_setup_gitgutter()
 		let g:which_key_map.g.G = { 'name': '+ Git Gutter' }
 		let g:which_key_map.g.G.t  = 'Toggle'
 		silent nnoremap <Leader>gGt :GitGutterToggle<CR>
@@ -29,5 +30,5 @@ if isdirectory($HOME . "/.vim/plugged/vim-gitgutter")
 		silent nnoremap <Leader>gGS <Plug>(GitGutterUndoHunk)
 	endfunction
 
-	call Key_setup_gitgutter()
+	call s:Key_setup_gitgutter()
 endif
