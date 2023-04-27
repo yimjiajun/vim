@@ -9,12 +9,12 @@ let g:which_key_map.l.r = { 'name': '+ Rename/Refactor' }
 let g:which_key_map.l.q = { 'name': '+ Quickfix' }
 let g:which_key_map.l.l = { 'name': '+ List' }
 
-function! Setting_key_move()
+function! s:Setting_key_move()
 	silent inoremap <C-b> <Left>
 	silent inoremap <C-f> <Right>
 endfunction
 
-function! Setting_key_buffer()
+function! s:Setting_key_buffer()
 	silent inoremap <C-s> <C-o>:w<CR>
 	silent nnoremap <S-Tab> :bp<CR>
 	silent nnoremap <Tab> :bn<CR>
@@ -26,7 +26,7 @@ function! Setting_key_buffer()
 	silent nnoremap <Leader>m :call M_marks("default")<CR>
 endfunction
 
-function! Setting_key_view()
+function! s:Setting_key_view()
 	silent nnoremap <BS> :set hlsearch!<CR>
 	if isdirectory($HOME . '/.vim/plugged/tagbar')
 		let g:which_key_map.T = 'Tagbar'
@@ -34,7 +34,7 @@ function! Setting_key_view()
 	endif
 endfunction
 
-function! Setting_key_edit()
+function! s:Setting_key_edit()
 	silent inoremap lkj <ESC>
 	silent tnoremap lkj <ESC>
 	silent tnoremap \][ <C-c> exit<CR>
@@ -55,7 +55,7 @@ function! Setting_key_edit()
 	endif
 endfunction
 
-function! Setting_key_yank()
+function! s:Setting_key_yank()
 	silent nnoremap x "_x
 	silent nnoremap X "_X
 	silent vnoremap x "_x
@@ -63,7 +63,7 @@ function! Setting_key_yank()
 	silent vnoremap p "_dp
 endfunction
 
-function! Setting_key_leader()
+function! s:Setting_key_leader()
 	if v:version >= 900
 		let g:mapleader=" "
 		let g:maplocalleader=" "
@@ -73,14 +73,14 @@ function! Setting_key_leader()
 	endif
 endfunction
 
-function! Setting_key_newtr()
+function! s:Setting_key_newtr()
 	let g:which_key_map.e = 'Explorer'
 	silent nnoremap <Leader>e :20Lexplore<CR>
 	let g:which_key_map.E = 'Explorer->file'
 	silent nnoremap <Leader>E :Explore<CR>
 endfunction
 
-function! Setting_key_search()
+function! s:Setting_key_search()
 	let g:which_key_map.f.f = 'files'
 	silent nnoremap <Leader>ff :call M_search_file()<CR>
 	let g:which_key_map.f.w = 'word'
@@ -97,7 +97,7 @@ function! Setting_key_search()
 	silent nnoremap <Leader>fA :call M_search_fuzzy(" ")<CR>
 endfunction
 
-function! Setting_key_git()
+function! s:Setting_key_git()
 
 	let g:which_key_map.g.g = { 'name': '+ Git' }
 	let g:which_key_map.g.g.l = 'log'
@@ -130,7 +130,7 @@ function! Setting_key_git()
 	silent nnoremap <Leader>ggc :call M_git_commit("default")<CR>
 endfunction
 
-function! Setting_key_terminal()
+function! s:Setting_key_terminal()
 	let g:which_key_map.t.s = 'Term (split)'
 	silent nnoremap <Leader>ts :call M_terminal("split")<CR>
 	let g:which_key_map.t.v = 'Term (vert)'
@@ -141,19 +141,19 @@ function! Setting_key_terminal()
 	silent nnoremap <Leader>tF :call M_terminal("selection")<CR>
 endfunction
 
-function! Setting_key_session()
+function! s:Setting_key_session()
 	let g:which_key_map.s = 'Session load'
 	silent nnoremap <Leader>s :call M_session("load")<CR>
 endfunction
 
-call Setting_key_leader()
-call Setting_key_move()
-call Setting_key_buffer()
-call Setting_key_view()
-call Setting_key_edit()
-call Setting_key_yank()
-call Setting_key_newtr()
-call Setting_key_search()
-call Setting_key_git()
-call Setting_key_terminal()
-call Setting_key_session()
+call s:Setting_key_leader()
+call s:Setting_key_move()
+call s:Setting_key_buffer()
+call s:Setting_key_view()
+call s:Setting_key_edit()
+call s:Setting_key_yank()
+call s:Setting_key_newtr()
+call s:Setting_key_search()
+call s:Setting_key_git()
+call s:Setting_key_terminal()
+call s:Setting_key_session()

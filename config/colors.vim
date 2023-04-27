@@ -1,5 +1,5 @@
-function Color_whitespace_trailing()
+function s:Color_whitespace_trailing()
 	 execute 'highlight ExtraWhitespace ctermbg=red guibg=red'
 endfunction
 
-call Color_whitespace_trailing()
+call s:Color_whitespace_trailing()
