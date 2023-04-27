@@ -10,57 +10,57 @@ let g:which_key_map.l.q = { 'name': '+ Quickfix' }
 let g:which_key_map.l.l = { 'name': '+ List' }
 
 function! s:Setting_key_move()
-	silent inoremap <C-b> <Left>
-	silent inoremap <C-f> <Right>
+	inoremap <silent> <C-b> <Left>
+	inoremap <silent> <C-f> <Right>
 endfunction
 
 function! s:Setting_key_buffer()
-	silent inoremap <C-s> <C-o>:w<CR>
-	silent nnoremap <S-Tab> :bp<CR>
-	silent nnoremap <Tab> :bn<CR>
-	silent nnoremap <esc><esc> :bd<CR>
+	inoremap <silent> <C-s> <C-o>:w<CR>
+	nnoremap <silent> <S-Tab> :bp<CR>
+	nnoremap <silent> <Tab> :bn<CR>
+	nnoremap <silent> <esc><esc> :bd<CR>
 
 	let g:which_key_map.b = 'Buffers'
-	silent nnoremap <Leader>b :call M_buffer("list")<CR>
+	nnoremap <silent> <Leader>b :call M_buffer("list")<CR>
 	let g:which_key_map.m = 'Marks'
-	silent nnoremap <Leader>m :call M_marks("default")<CR>
+	nnoremap <silent> <Leader>m :call M_marks("default")<CR>
 endfunction
 
 function! s:Setting_key_view()
-	silent nnoremap <BS> :set hlsearch!<CR>
+	nnoremap <silent> <BS> :set hlsearch!<CR>
 	if isdirectory($HOME . '/.vim/plugged/tagbar')
 		let g:which_key_map.T = 'Tagbar'
-		silent nnoremap <Leader>T :TagbarToggle<CR>
+		nnoremap <silent> <Leader>T :TagbarToggle<CR>
 	endif
 endfunction
 
 function! s:Setting_key_edit()
-	silent inoremap lkj <ESC>
-	silent tnoremap lkj <ESC>
-	silent tnoremap \][ <C-c> exit<CR>
-	silent inoremap () ()<ESC>i
-	silent inoremap {} {}<ESC>i
-	silent inoremap "" ""<ESC>i
-	silent inoremap '' ''<ESC>i
-	silent inoremap {<CR> {<CR>}<C-o>O
-	silent inoremap (<CR> (<CR>)<C-o>O
-	silent inoremap [<CR> [<CR>]<C-o>O
-	silent inoremap "<CR> "<CR>"<C-o>O
-	silent inoremap '<CR> '<CR>'<C-o>O
+	inoremap lkj <ESC>
+	tnoremap lkj <ESC>
+	tnoremap \][ <C-c> exit<CR>
+	inoremap () ()<ESC>i
+	inoremap {} {}<ESC>i
+	inoremap "" ""<ESC>i
+	inoremap '' ''<ESC>i
+	inoremap {<CR> {<CR>}<C-o>O
+	inoremap (<CR> (<CR>)<C-o>O
+	inoremap [<CR> [<CR>]<C-o>O
+	inoremap "<CR> "<CR>"<C-o>O
+	inoremap '<CR> '<CR>'<C-o>O
 
 	if isdirectory($HOME . '/.vim/plugged/vim-easy-align')
 		let g:which_key_map.t.a  = 'Alignment'
-		silent nnoremap <Leader>ta <Plug>(LiveEasyAlign)
-		silent xnoremap <Leader>ta <Plug>(LiveEasyAlign)
+		nnoremap <silent> <Leader>ta <Plug>(LiveEasyAlign)
+		xnoremap <silent> <Leader>ta <Plug>(LiveEasyAlign)
 	endif
 endfunction
 
 function! s:Setting_key_yank()
-	silent nnoremap x "_x
-	silent nnoremap X "_X
-	silent vnoremap x "_x
-	silent vnoremap X "_X
-	silent vnoremap p "_dp
+	""nnoremap x "_x
+	nnoremap X "_X
+	vnoremap x "_x
+	vnoremap X "_X
+	vnoremap p "_dp
 endfunction
 
 function! s:Setting_key_leader()
@@ -75,75 +75,75 @@ endfunction
 
 function! s:Setting_key_newtr()
 	let g:which_key_map.e = 'Explorer'
-	silent nnoremap <Leader>e :20Lexplore<CR>
+	nnoremap <silent> <Leader>e :20Lexplore<CR>
 	let g:which_key_map.E = 'Explorer->file'
-	silent nnoremap <Leader>E :Explore<CR>
+	nnoremap <silent> <Leader>E :Explore<CR>
 endfunction
 
 function! s:Setting_key_search()
 	let g:which_key_map.f.f = 'files'
-	silent nnoremap <Leader>ff :call M_search_file()<CR>
+	nnoremap <silent> <Leader>ff :call M_search_file()<CR>
 	let g:which_key_map.f.w = 'word'
-	silent nnoremap <Leader>fw :call M_search_word(" ")<CR>
+	nnoremap <silent> <Leader>fw :call M_search_word(" ")<CR>
 	let g:which_key_map.f.c = '.c'
-	silent nnoremap <Leader>fc :call M_search_word("*.c")<CR>
+	nnoremap <silent> <Leader>fc :call M_search_word("*.c")<CR>
 	let g:which_key_map.f.C = '.c, .cpp, .h'
-	silent nnoremap <Leader>fC :call M_search_word("*.{c,h,cpp}")<CR>
+	nnoremap <silent> <Leader>fC :call M_search_word("*.{c,h,cpp}")<CR>
 	let g:which_key_map.f.h = '.h'
-	silent nnoremap <Leader>fh :call M_search_word("*.h")<CR>
+	nnoremap <silent> <Leader>fh :call M_search_word("*.h")<CR>
 	let g:which_key_map.f.d = '.dts, .dtsi'
-	silent nnoremap <Leader>fd :call M_search_word("*.{dts,dtsi}")<CR>
+	nnoremap <silent> <Leader>fd :call M_search_word("*.{dts,dtsi}")<CR>
 	let g:which_key_map.f.A = 'fuzzy search'
-	silent nnoremap <Leader>fA :call M_search_fuzzy(" ")<CR>
+	nnoremap <silent> <Leader>fA :call M_search_fuzzy(" ")<CR>
 endfunction
 
 function! s:Setting_key_git()
 
 	let g:which_key_map.g.g = { 'name': '+ Git' }
 	let g:which_key_map.g.g.l = 'log'
-	silent nnoremap <Leader>ggl :call M_git_log("graph")<CR>
+	nnoremap <silent> <Leader>ggl :call M_git_log("graph")<CR>
 	let g:which_key_map.g.g.L = 'log (info..)'
-	silent nnoremap <Leader>ggL :call M_git_log("default")<CR>
+	nnoremap <silent> <Leader>ggL :call M_git_log("default")<CR>
 	let g:which_key_map.g.g.H = 'log (diff)'
-	silent nnoremap <Leader>ggH :call M_git_log("diff")<CR>
+	nnoremap <silent> <Leader>ggH :call M_git_log("diff")<CR>
 	let g:which_key_map.g.g.C = 'commit count'
-	silent nnoremap <Leader>ggC :call M_git_log("commit_count")<CR>
+	nnoremap <silent> <Leader>ggC :call M_git_log("commit_count")<CR>
 	let g:which_key_map.g.g.d = 'diff'
-	silent nnoremap <Leader>ggd :call M_git_diff("default")<CR>
+	nnoremap <silent> <Leader>ggd :call M_git_diff("default")<CR>
 	let g:which_key_map.g.g.D = 'diff (prev)'
-	silent nnoremap <Leader>ggD :call M_git_diff("previous")<CR>
+	nnoremap <silent> <Leader>ggD :call M_git_diff("previous")<CR>
 	let g:which_key_map.g.g.h = 'diff (staging)'
-	silent nnoremap <Leader>ggh :call M_git_diff("staging")<CR>
+	nnoremap <silent> <Leader>ggh :call M_git_diff("staging")<CR>
 	let g:which_key_map.g.g.s = 'status'
-	silent nnoremap <Leader>ggs :call M_git_status("default")<CR>
+	nnoremap <silent> <Leader>ggs :call M_git_status("default")<CR>
 	let g:which_key_map.g.g.S = 'status (short)'
-	silent nnoremap <Leader>ggS :call M_git_status("short")<CR>
+	nnoremap <silent> <Leader>ggS :call M_git_status("short")<CR>
 	let g:which_key_map.g.g.w = 'whitespace check'
-	silent nnoremap <Leader>ggw :call M_git_status("check_whitespace")<CR>
+	nnoremap <silent> <Leader>ggw :call M_git_status("check_whitespace")<CR>
 	let g:which_key_map.g.g.p = 'add (patch)'
-	silent nnoremap <Leader>ggp :call M_git_add("patch")<CR>
+	nnoremap <silent> <Leader>ggp :call M_git_add("patch")<CR>
 	let g:which_key_map.g.g.a = 'add'
-	silent nnoremap <Leader>gga :call M_git_add("default")<CR>
+	nnoremap <silent> <Leader>gga :call M_git_add("default")<CR>
 	let g:which_key_map.g.g.A = 'add (all)'
-	silent nnoremap <Leader>ggA :call M_git_add("all")<CR>
+	nnoremap <silent> <Leader>ggA :call M_git_add("all")<CR>
 	let g:which_key_map.g.g.c = 'commit'
-	silent nnoremap <Leader>ggc :call M_git_commit("default")<CR>
+	nnoremap <silent> <Leader>ggc :call M_git_commit("default")<CR>
 endfunction
 
 function! s:Setting_key_terminal()
 	let g:which_key_map.t.s = 'Term (split)'
-	silent nnoremap <Leader>ts :call M_terminal("split")<CR>
+	nnoremap <silent> <Leader>ts :call M_terminal("split")<CR>
 	let g:which_key_map.t.v = 'Term (vert)'
-	silent nnoremap <Leader>tv :call M_terminal("vertical")<CR>
+	nnoremap <silent> <Leader>tv :call M_terminal("vertical")<CR>
 	let g:which_key_map.t.f = 'Term'
-	silent nnoremap <Leader>tf :call M_terminal("default")<CR>
+	nnoremap <silent> <Leader>tf :call M_terminal("default")<CR>
 	let g:which_key_map.t.F = 'Term (selection)'
-	silent nnoremap <Leader>tF :call M_terminal("selection")<CR>
+	nnoremap <silent> <Leader>tF :call M_terminal("selection")<CR>
 endfunction
 
 function! s:Setting_key_session()
 	let g:which_key_map.s = 'Session load'
-	silent nnoremap <Leader>s :call M_session("load")<CR>
+	nnoremap <silent> <Leader>s :call M_session("load")<CR>
 endfunction
 
 call s:Setting_key_leader()
