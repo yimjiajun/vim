@@ -102,6 +102,6 @@ augroup END
 augroup session
 	augroup save_session
 		au!
-		au VimLeavePre * call M_session("save")
+		au VimLeavePre *.* call M_session("save")
 	augroup END
 augroup END
