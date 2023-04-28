@@ -97,7 +97,7 @@ function vim_install {
 	echo -e "\033[33m================================\033[0m"
 
 	vim +PlugInstall +qall
-	vim +'call Install_all()' +qall
+	vim +'Install' +qall
 }
 
 function main {
