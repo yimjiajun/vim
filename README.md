@@ -5,7 +5,29 @@ Vim customize features is compatible between plugin and vim builtin plugin / com
 Ever without any plugins still can working as similar features.<br>
 </div>
 
-<br><div align="center"> <h2> Download </h2> </div>
+<br><div align="center"> <h2> Installation </h2> </div>
+
+1. Clone to `$HOME/.config/vim`
+
+    ```bash
+    git clone https://github.com/yimjiajun/vim.git $HOME/.config/vim
+    ```
+
+2. Install vim and requires packages:
+
+    ```bash
+    ./$HOME/.config/vim/features/install.sh
+    ```
+
+3. Enjoy vim:
+
+    ```bash
+    vim
+    ```
+
+<br>
+<details><summary> manual installation </summary>
+<br>
 
 1. Download vim repository and enter the source code
 
@@ -33,15 +55,14 @@ Ever without any plugins still can working as similar features.<br>
     ```bash
     vim --version | grep python
     ```
-<br><div align="center"> <h2> Installation </h2> </div>
 
-1. Clone to `$HOME/.config/vim`
+4. Clone to `$HOME/.config/vim`
 
     ```bash
     git clone https://github.com/yimjiajun/vim.git $HOME/.config/vim
     ```
 
-2. Export `vim` customize vim configuration file path[^2]<br>
+5. Export `vim` customize vim configuration file path[^2]<br>
    Source the script to active the environment variable.
 
     * zsh shell:
@@ -58,11 +79,14 @@ Ever without any plugins still can working as similar features.<br>
       source $HOME/.bashrc
       ```
 
-3. Install vim plugins and install system dependencies package
+6. Install vim plugins and install system dependencies package
 
     ```bash
-    vim +PlugInstall +'call Install_all()'
+    vim +PlugInstall +qall
+    vim +Install +qall
     ```
+
+</details>
 
 <br><br><br>
 [^1]: `vim --version`: should display either one `+python` or `+python3` to support [snippets](https://en.wikipedia.org/wiki/Snippet_(programming))
