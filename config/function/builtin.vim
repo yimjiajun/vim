@@ -1,41 +1,52 @@
 function! M_search_file()
-	if g:loaded_fzf_vim == "1"
-		execute "Files"
-	else
-		let regex_file = input("File to search (regex): ")
-		execute "find ./**/" . regex_file
-	endif
+	let regex_file = input("File to search (regex): ")
+	execute "find ./**/" . regex_file
 endfunction
 
 function! M_search_word(extension)
 	if mode() == 'n'
-		execute "vimgrep /" . expand('<cword>') . "/gj ./**/*" . a:extension
+		if executable('rg')
+			cexpr system('rg --vimgrep ' . expand('<cword>') . ' ./**/' . a:extension)
+		else
+			execute "vimgrep /" . expand('<cword>') . "/gj ./**/" . a:extension
+		endif
 		execute "tab +copen"
 	elseif mode() == "V"
 		execute "'<,' > norm y<CR>gv"
-		execute "vimgrep /" . getreg("*") . "/gj ./**/*" . a:extension
+		if executable('rg')
+			cexpr system('rg --vimgrep ' . getreg("*") . ' ./**/' . a:extension)
+		else
+			execute "vimgrep /" . getreg("*") . "/gj ./**/" . a:extension
+		endif
 	endif
 endfunction
 
 function! M_search_fuzzy(extension)
-	if g:loaded_fzf_vim == "1"
-		execute "Rg"
-	else
-		let word=input("Enter word to search: ")
-		if mode() == 'n'
-			if empty(word)
-				let word = expand('<cword>')
-			endif
-			execute "vimgrep /" . word . "/gjf ./**"
-			execute "tab +copen"
-		elseif mode() == "V"
-			if empty(word)
-				let word = getreg("*")
-			endif
-			execute "'<,' > norm y<CR>gv"
-			execute "vimgrep /" . word . "/gjf ./**"
+	let l:word=input("Enter word to search: ")
+	if mode() == 'n'
+		if empty(l:word)
+			let l:word = expand('<cword>')
 		endif
 
+		if executable('rg')
+			cexpr system('rg --vimgrep --smart-case ' . l:word . ' ./**/' . a:extension)
+		else
+			execute "vimgrep /" . l:word . "/gjf ./**"
+		endif
+
+		execute "tab +copen"
+	elseif mode() == "V"
+		if empty(l:word)
+			let l:word = getreg("*")
+		endif
+
+		execute "'<,' > norm y<CR>gv"
+
+		if executable('rg')
+			cexpr system('rg --vimgrep ' . l:word . ' ./**/' . a:extension)
+		else
+			execute "vimgrep /" . l:word . "/gjf ./**"
+		endif
 	endif
 endfunction
 

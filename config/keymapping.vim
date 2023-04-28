@@ -95,6 +95,18 @@ function! Setting_key_search()
 	silent nnoremap <Leader>fd :call M_search_word("*.{dts,dtsi}")<CR>
 	let g:which_key_map.f.A = 'fuzzy search'
 	silent nnoremap <Leader>fA :call M_search_fuzzy(" ")<CR>
+	let g:which_key_map.f.a = 'search'
+	silent nnoremap <Leader>fa :call M_search_fuzzy(" ")<CR>
+	let g:which_key_map.f.q = 'custom filetype search'
+	silent nnoremap <Leader>fq :call M_search_fuzzy("*." . input("Enter FileType: "))<CR>
+	let g:which_key_map.f.Q = 'custom file search'
+	silent nnoremap <Leader>fQ :call M_search_fuzzy(input("Enter FileType: "))<CR>
+	let g:which_key_map.f.K = 'Kconfig'
+	silent nnoremap <Leader>fK :call M_search_word("Kconfig")<CR>
+	let g:which_key_map.f.k = '.conf'
+	silent nnoremap <Leader>fk :call M_search_word("*.conf")<CR>
+	let g:which_key_map.f.m = 'CMakeLists'
+	silent nnoremap <Leader>fm :call M_search_word("CMakeLists.txt") <CR>
 endfunction
 
 function! Setting_key_git()
