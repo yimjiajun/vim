@@ -55,3 +55,26 @@ function! M_get_install_package_cmd()
 
 	return g:system_install_cmd
 endfunction
+
+function! M_get_remote_path(server)
+	let l:remote_path = ''
+
+	if tolower(a:server) == 'dropbox'
+		if has('unix')
+			let l:remote_path = expand($HOME . '/Dropbox')
+
+			if isdirectory('/run/WSL')
+				let l:win_remote_path = system('find /mnt/c/Users/*/ -maxdepth 1 -type d \( -iname "Dropbox" ! -path "*All Users*" \) -print -quit 2>/dev/null')
+				let l:win_remote_path = substitute(l:win_remote_path, '\n', '', 'g')
+				execute "silent !ln -sf " . l:win_remote_path . " " . l:remote_path
+			endif
+		endif
+	endif
+
+	if !isdirectory(l:remote_path)
+		echohl ErrorMsg | echo "Remote path not found !" | echo none
+		return ''
+	endif
+
+	return l:remote_path
+endfunction
