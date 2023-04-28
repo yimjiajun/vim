@@ -6,9 +6,11 @@ function! Display_tittle(string)
 		let l:display .= l:delimiter
 	endfor
 
+	echohl MoreMsg
 	echo "+" . l:display . "+"
 	echo "\t" . expand(a:string)
 	echo "+" . l:display . "+"
+	echohl none
 endfunction
 
 function! Install_curl()
@@ -58,7 +60,6 @@ function! Install_ctags()
 	call Display_tittle('ctags')
 
 	if executable('ctags')
-		echo "Existed: Skip install ctags ..."
 		return
 	endif
 
@@ -140,7 +141,7 @@ function! Install_go()
 endfunction
 
 function! Install_coc_language()
-	function! Install_coc_cmkae()
+	function! Install_coc_cmake()
 		if executable('pip')
 			echo system("pip install cmake-language-server")
 		else
@@ -158,9 +159,9 @@ function! Install_coc_language()
 	let l:lang .= ' ' . g:install_coc_snippets_lang
 	let l:install = 'CocInstall'
 	let l:install_cmd = l:install . ' ' . l:lang
-	execute l:install_cmd
+	silent execute l:install_cmd
 
-	call Install_coc_cmkae()
+	call Install_coc_cmake()
 	echo system("ln -sF $(dirname $VIMINIT | cut -d ' ' -f 2)/setup/coc-settings.json $HOME/.vim/")
 endfunction
 
@@ -182,7 +183,7 @@ function! Install_coc_snippets()
 endfunction
 
 function! Install_all()
-	echohl MoreMsg | call Display_tittle("Install all packages") | echohl none
+	echo "Install all packages ..."
 	call Install_curl()
 	call Install_nodejs()
 	call Install_ctags()
@@ -191,3 +192,5 @@ function! Install_all()
 	call Install_coc_snippets()
 	call Install_coc_language()
 endfunction
+
+command! -nargs=0 -bang Install call Install_all()
