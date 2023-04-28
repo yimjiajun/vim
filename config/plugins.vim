@@ -39,6 +39,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'machakann/vim-highlightedyank'
 
 		Plug 'tpope/vim-commentary'
+
+		Plug 'dhruvasagar/vim-dotoo'
 	call plug#end()
 
 	let g:plug_threads = 16
