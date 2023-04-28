@@ -24,8 +24,7 @@ function python_install {
 function linux_dev_lib_install {
 	echo "Installing linux dev lib ..."
 	install_cmd=$(get_package_install_cmd)
-	$install_cmd build-essential
-	$install_cmd libncurses-dev
+	$install_cmd build-essential libncurses-dev libjansson-dev
 }
 
 function build_essential_install {

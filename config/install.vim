@@ -53,6 +53,43 @@ function! Install_nodejs()
 	endif
 endfunction
 
+function! Install_ctags()
+#
+	call Display_tittle('ctags')
+
+	if executable('ctags')
+		echo "Existed: Skip install ctags ..."
+		return
+	endif
+
+	let l:url = 'https://github.com/universal-ctags/ctags.git'
+	let l:path = expand('/tmp/ctags')
+
+	for i in range(1, 99)
+		let l:path_postfix = l:path
+		let l:path_postfix .= '_' . i
+
+		if !isdirectory(l:path_postfix)
+			break
+		endif
+	endfor
+
+	let l:cmd = 'git clone --depth=1 ' . l:url . ' ' . l:path_postfix
+	echo system(l:cmd)
+
+	if has('mac')
+		let l:cmd = 'brew tap universal-ctags/universal-ctags' . ' && ' . 'brew install --HEAD universal-ctags/universal-ctags/universal-ctags'
+		echo system(l:cmd)
+	elseif has('unix')
+		if isdirectory(l:path_postfix)
+			let l:cmd = 'cd ' . l:path_postfix . ' && ./autogen.sh && ./configure && make && sudo make install'
+			echo system(l:cmd)
+		endif
+	else
+		echoerr "System not support ..."
+	endif
+endfunction
+
 function! Install_ripgrep()
 	let l:pkg = 'ripgrep'
 	let l:install = M_get_install_package_cmd()
@@ -148,6 +185,7 @@ function! Install_all()
 	echohl MoreMsg | call Display_tittle("Install all packages") | echohl none
 	call Install_curl()
 	call Install_nodejs()
+	call Install_ctags()
 	call Install_ripgrep()
 	call Install_fzf()
 	call Install_coc_snippets()
