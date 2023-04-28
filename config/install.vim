@@ -56,7 +56,6 @@ function! Install_nodejs()
 endfunction
 
 function! Install_ctags()
-#
 	call Display_tittle('ctags')
 
 	if executable('ctags')
