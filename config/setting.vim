@@ -1,4 +1,4 @@
-function! Setting_view()
+function! s:Setting_view()
 	set background=dark
 	set timeoutlen=300
 	set updatetime=400
@@ -23,7 +23,7 @@ function! Setting_view()
 	" endif
 endfunction
 
-function! Setting_editor()
+function! s:Setting_editor()
 	set ignorecase
 	set smartcase
 	set showmatch
@@ -45,12 +45,12 @@ function! Setting_editor()
 	set undofile
 endfunction
 
-function! Setting_buffer()
+function! s:Setting_buffer()
 	set hidden
 	set lazyredraw
 endfunction
 
-function! Setting_plugin_manager()
+function! s:Setting_plugin_manager()
 	if !filereadable($HOME . '/.vim/autoload/plug.vim')
 		echo "==========================="
 		echo " Download Plugin Manager ..."
@@ -64,7 +64,7 @@ function! Setting_plugin_manager()
 endfunction
 
 set nocompatible
-call Setting_view()
-call Setting_editor()
-call Setting_buffer()
-call Setting_plugin_manager()
+call s:Setting_view()
+call s:Setting_editor()
+call s:Setting_buffer()
+call s:Setting_plugin_manager()
