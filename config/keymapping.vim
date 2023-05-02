@@ -75,7 +75,7 @@ endfunction
 
 function! s:Setting_key_newtr()
 	let g:which_key_map.e = 'Explorer'
-	nnoremap <silent> <Leader>e :20Lexplore<CR>
+	nnoremap <silent> <Leader>e :Lexplore<CR>
 	let g:which_key_map.E = 'Explorer->file'
 	nnoremap <silent> <Leader>E :Explore<CR>
 endfunction

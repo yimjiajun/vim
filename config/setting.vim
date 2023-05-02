@@ -63,8 +63,17 @@ function! s:Setting_plugin_manager()
 
 endfunction
 
+function! s:Setting_netrw()
+	let g:netrw_liststyle = 3
+	let g:netrw_banner = 0
+	let g:netrw_browser_split = 4
+	let g:netrw_altv = 1
+	let g:netrw_winsize = 25
+endfunction
+
 set nocompatible
 call s:Setting_view()
 call s:Setting_editor()
 call s:Setting_buffer()
 call s:Setting_plugin_manager()
+call s:Setting_netrw()
