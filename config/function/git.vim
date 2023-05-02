@@ -1,5 +1,9 @@
 function! M_git_get_cmd_plugin()
-	if g:loaded_fugitive == 1
+	if exists(":FloatermNew")
+		return "FloatermNew --width=0.9 --height=0.9" . " git "
+	endif
+
+	if exists(":Git")
 		return "Git"
 	endif
 

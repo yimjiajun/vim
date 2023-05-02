@@ -58,13 +58,13 @@ function! M_terminal(mode)
 		execute "vert term"
 	elseif a:mode == "selection"
 		let l:shell = input("Select shell (bash, sh, zsh, powershell.exe): ")
-		if g:loaded_floaterm
+		if exists(':FloatermNew')
 			execute "FloatermNew --width=0.9 --height=0.9 " . l:shell
 		else
 			execute "tab term " . l:shell
 		endif
 	else
-		if g:loaded_floaterm
+		if exists(':FloatermNew')
 			execute "FloatermNew --width=0.9 --height=0.9"
 		else
 			execute "tab term"
