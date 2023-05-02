@@ -41,6 +41,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'tpope/vim-commentary'
 
 		Plug 'dhruvasagar/vim-dotoo'
+
+		Plug 'Eliot00/git-lens.vim'
 	call plug#end()
 
 	let g:plug_threads = 16
