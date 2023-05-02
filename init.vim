@@ -13,8 +13,13 @@ if !has('nvim')
 
 	let script_path = $HOME . "/.config/vim"
 
-	for _dir in ['config', 'setup', 'features']
+	for _dir in ['config', 'setup', 'features', 'usr']
 		let path = Append_path(script_path, _dir)
+
+		if path == script_path
+			continue
+		endif
+
 		let vimscripts = split(glob(Get_absolute_path(path, '/**/*.vim')))
 		for _script in vimscripts
 			execute 'source ' . _script
