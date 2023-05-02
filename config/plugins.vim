@@ -45,6 +45,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'tpope/vim-surround'
 
 		Plug 'Eliot00/git-lens.vim'
+
+		Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 	call plug#end()
 
 	let g:plug_threads = 16
