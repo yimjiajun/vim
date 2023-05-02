@@ -18,9 +18,9 @@ function! s:Setting_view()
 	execute 'syntax on'
 	set listchars=tab:▸\ ,trail:·,extends:…,precedes:…,nbsp:␣
 	set list
-	" if has('termguicolors')
-		" set termguicolors
-	" endif
+	if has('termguicolors')
+		set termguicolors
+	endif
 endfunction
 
 function! s:Setting_editor()
