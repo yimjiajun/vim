@@ -42,6 +42,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 
 		Plug 'dhruvasagar/vim-dotoo'
 
+		Plug 'tpope/vim-surround'
+
 		Plug 'Eliot00/git-lens.vim'
 	call plug#end()
 
