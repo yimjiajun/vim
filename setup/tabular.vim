@@ -5,7 +5,7 @@ if isdirectory($HOME . '/.vim/plugged/tabular')
 			execute 'Tabularize /' . l:delimiter
 		endfunction
 
-		let g:which_key_map.g.t = { 'name': '+ Tabular' }
+		let g:which_key_map.g.t = 'Tabular align'
 		nnoremap <silent> <Leader>gt :call Tabular_align() <CR>
 		vnoremap <silent> <Leader>gt :call Tabular_align() <CR>
 	endfunction

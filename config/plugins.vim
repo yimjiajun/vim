@@ -47,6 +47,8 @@ if filereadable($HOME . '/.vim/autoload/plug.vim')
 		Plug 'Eliot00/git-lens.vim'
 
 		Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
+
+		Plug 'dhruvasagar/vim-table-mode'
 	call plug#end()
 
 	let g:plug_threads = 16
