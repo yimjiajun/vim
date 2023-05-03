@@ -66,14 +66,19 @@ function! M_get_remote_path(server)
 			if isdirectory('/run/WSL')
 				let l:win_remote_path = system('find /mnt/c/Users/*/ -maxdepth 1 -type d \( -iname "Dropbox" ! -path "*All Users*" \) -print -quit 2>/dev/null')
 				let l:win_remote_path = substitute(l:win_remote_path, '\n', '', 'g')
-				execute "silent !ln -sf " . l:win_remote_path . " " . l:remote_path
+
+				if empty(l:win_remote_path) == 0
+					execute "silent !ln -sf " . l:win_remote_path . " " . l:remote_path
+				endif
 			endif
 		endif
 	endif
 
-	if !isdirectory(l:remote_path)
-		echohl ErrorMsg | echo "Remote path not found !" | echo none
-		return ''
+	if empty(l:remote_path) == 0
+		if !isdirectory(l:remote_path)
+			echohl ErrorMsg | echo "Remote path not found !" | echohl none
+			return ''
+		endif
 	endif
 
 	return l:remote_path

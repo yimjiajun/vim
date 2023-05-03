@@ -72,12 +72,9 @@ if isdirectory($HOME . '/.vim/plugged/vim-dotoo')
 	let remote_server = 'Dropbox'
 	let remote_dir =  M_get_remote_path(remote_server)
 
-	if remote_dir != ''
+	if empty(remote_dir) == 0
 		let dotoo_dir = 'dotoo'
 		let remote_dir = remote_dir . '/' . dotoo_dir
-	endif
-
-	if remote_dir != ''
 		if !isdirectory(remote_dir)
 			call mkdir(remote_dir, 'p')
 
