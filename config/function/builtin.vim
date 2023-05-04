@@ -1,3 +1,9 @@
+let g:build_cmd_list = [
+	\ { 'name': 'Vim',
+	\   'cmd': 'vim --version'
+	\},
+\]
+
 function! M_search_file()
 	let regex_file = input("File to search (regex): ")
 	execute "find ./**/" . regex_file
@@ -122,3 +128,43 @@ function! M_session(mode)
 		endif
 	endif
 endfunction
+
+function! M_build()
+	function! s:convert_string_to_set_makeprg(cmd)
+		let l:keep_backslash = substitute(a:cmd, '\', '\\\\', 'g')
+		let l:keep_quotes = substitute(l:keep_backslash, '"', '\\"', 'g')
+		let l:mp = substitute(l:keep_quotes, '\s', '\\ ', 'g')
+		execute "set makeprg=" . l:mp
+		return l:mp
+	endfunction
+	let l:count = 0
+
+	for list in g:build_cmd_list
+		echo printf("%2d: %s", l:count, list['name'])
+		let l:count += 1
+	endfor
+
+	echo printf("%2d: %s", len(g:build_cmd_list), "Cancel")
+
+	let l:choice = input("Select build: ")
+
+	if l:choice == len(g:build_cmd_list)
+		return v:false
+	endif
+
+	let l:cmd = g:build_cmd_list[l:choice]['cmd']
+	call s:convert_string_to_set_makeprg(l:cmd)
+
+	if exists(':Make')
+		execute "Make"
+	else
+		execute "make"
+	endif
+endfunction
+
+function! M_build_setup(name, cmd)
+	call add(g:build_cmd_list, { 'name': a:name, 'cmd': a:cmd })
+endfunction
+
+command! -nargs=1 BuildSetup call M_build_setup(<args>)
+command! -nargs=0 -bang Build call M_build()
