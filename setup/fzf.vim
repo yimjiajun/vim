@@ -25,7 +25,7 @@ if isdirectory($HOME . '/.vim/plugged/fzf.vim')
 		let g:which_key_map.f.A = 'fuzzy search'
 		nnoremap <silent> <Leader>fA :call RipgrepFzf('', 0, '* --hidden')<CR>
 		let g:which_key_map.f.a = 'search'
-		nnoremap <silent> <Leader>fa :RG<CR>
+		nnoremap <silent> <Leader>fa :Rg<CR>
 		let g:which_key_map.f.q = 'custom filetype search'
 		nnoremap <silent> <Leader>fq :call RipgrepFzf(expand('<cword>'), 0, "./**/*." . input("Enter FileType: "))<CR>
 		let g:which_key_map.f.Q = 'custom file search'
