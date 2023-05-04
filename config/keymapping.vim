@@ -107,6 +107,8 @@ function! s:Setting_key_search()
 	nnoremap <silent> <Leader>fk :call M_search_word("*.conf")<CR>
 	let g:which_key_map.f.m = 'CMakeLists'
 	nnoremap <silent> <Leader>fm :call M_search_word("CMakeLists.txt") <CR>
+	let g:which_key_map.f.v = 'vim'
+	nnoremap <silent> <Leader>fv :call M_search_fuzzy(input("Enter FileType: ", "*."))<CR>
 endfunction
 
 function! s:Setting_key_git()
