@@ -160,6 +160,11 @@ function! s:Setting_key_session()
 	nnoremap <silent> <Leader>s :call M_session("load")<CR>
 endfunction
 
+function! s:Setting_key_features()
+	let g:which_key_map.t.c = 'cTags'
+	nnoremap <silent> <Leader>tc :call M_create_ctags()<CR>
+endfunction
+
 call s:Setting_key_leader()
 call s:Setting_key_move()
 call s:Setting_key_buffer()
@@ -171,3 +176,4 @@ call s:Setting_key_search()
 call s:Setting_key_git()
 call s:Setting_key_terminal()
 call s:Setting_key_session()
+call s:Setting_key_features()

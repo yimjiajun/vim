@@ -83,3 +83,13 @@ function! M_get_remote_path(server)
 
 	return l:remote_path
 endfunction
+
+function! M_create_ctags()
+	echo  system("ctags -RV . && sort -u -o tags tags")
+
+	if file_readable('tags')
+		echohl MoreMsg | echo "Ctags created !" | echohl none
+	else
+		echohl ErrorMsg | echo "Failed to create ctags !" | echohl none
+	endif
+endfunction
