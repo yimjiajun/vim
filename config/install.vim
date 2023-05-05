@@ -140,12 +140,37 @@ function! Install_go()
 endfunction
 
 function! Install_coc_language()
-	function! Install_coc_cmake()
+	function! s:Install_coc_cmake()
 		if executable('pip')
 			echo system("pip install cmake-language-server")
 		else
 			echo system("pip3 install cmake-language-server")
 		endif
+
+		let g:coc_lang_install .= ' ' . 'coc-cmake'
+	endfunction
+
+	function! s:Install_coc_vim()
+		if executable('npm')
+			echo system("npm install -g vim-language-server")
+		endif
+
+		let g:coc_lang_install .= ' ' . 'coc-vimlsp'
+	endfunction
+
+	function! s:Install_coc_clangd()
+		if executable('clangd') == 0
+			let l:install_cmd = M_get_install_package_cmd()
+
+			if has('mac')
+				echo system(l:install_cmd . " llvm ")
+			elseif has('unix')
+				echo system(l:install_cmd . " clangd-12 ")
+				echo system("sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100")
+			endif
+		endif
+
+		let g:coc_lang_install .= ' ' . 'coc-clangd'
 	endfunction
 
 	if !isdirectory($HOME . '/.vim/plugged/coc.nvim')
@@ -154,13 +179,19 @@ function! Install_coc_language()
 
 	call Display_tittle("Coc LSP")
 
-	let l:lang = "coc-clangd coc-markdownlint coc-json coc-cmake"
+	let l:lang = "coc-markdownlint coc-json"
 	let l:lang .= ' ' . g:install_coc_snippets_lang
+	let g:coc_lang_install = ' '
+
+	call s:Install_coc_cmake()
+	call s:Install_coc_vim()
+	call s:Install_coc_clangd()
+
+	let g:coc_lang_install .= ' ' .  l:lang
 	let l:install = 'CocInstall'
-	let l:install_cmd = l:install . ' ' . l:lang
+	let l:install_cmd = l:install . ' ' . g:coc_lang_install
 	silent execute l:install_cmd
 
-	call Install_coc_cmake()
 	echo system("ln -sF $(dirname $VIMINIT | cut -d ' ' -f 2)/setup/coc-settings.json $HOME/.vim/")
 endfunction
 

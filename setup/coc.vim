@@ -20,6 +20,15 @@ function! H_coc()
 	endif
 endfunction
 
+function! s:coc_setup_vim_lsp()
+	let g:markdown_fenced_languages = [
+		\ 'vim',
+		\ 'help'
+		\]
+endfunction
+
+call s:coc_setup_vim_lsp()
+
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
 " utf-8 byte sequence
 set encoding=utf-8
